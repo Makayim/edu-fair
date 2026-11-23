@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Digital — Edu Fair & Career Expo 2026</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Hero Header -->
+    <header class="hero-header">
+      <span class="badge-event">SMKN 6 Kota Tangerang Selatan</span>
+      <h1>Edu Fair & Career Expo 2026</h1>
+      <p class="tagline">"Connecting Competence to Future: Bekerja, Melanjutkan, Berwirausaha"</p>
+    </header>
+
+    <!-- Personalized Guest Greeting Box -->
+    <div class="card" style="text-align: center; padding: 24px;">
+      <div class="greeting-box" style="margin-bottom: 0; border: none; background: transparent;">
+        <h3>Kepada Yth. Bapak/Ibu / Rekan:</h3>
+        <h2 id="inviteHeaderName">Memuat Nama Tamu...</h2>
+        <p id="inviteInstansiName" class="instansi-name">Memuat Instansi...</p>
+        <div style="margin-top: 12px;">
+          <span id="inviteCategoryBadge" class="category-badge">Mitra Undangan</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Countdown Timer Card -->
+    <div class="card" style="text-align: center;">
+      <h3 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 16px;">Menuju Hari Acara</h3>
+      <div class="countdown-container" id="countdown">
+        <div class="countdown-box">
+          <span class="number" id="days">00</span>
+          <span class="label">Hari</span>
+        </div>
+        <div class="countdown-box">
+          <span class="number" id="hours">00</span>
+          <span class="label">Jam</span>
+        </div>
+        <div class="countdown-box">
+          <span class="number" id="minutes">00</span>
+          <span class="label">Menit</span>
+        </div>
+        <div class="countdown-box">
+          <span class="number" id="seconds">00</span>
+          <span class="label">Detik</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Detail Info Grid -->
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="icon">📅</div>
+        <h4>Hari, Tanggal</h4>
+        <p>Rabu, 25 Nov 2026</p>
+      </div>
+      <div class="info-item">
+        <div class="icon">⏰</div>
+        <h4>Waktu</h4>
+        <p>07.00 – 14.00 WIB</p>
+      </div>
+      <div class="info-item" style="grid-column: span 1 / -1;">
+        <div class="icon">📍</div>
+        <h4>Lokasi</h4>
+        <p>SMKN 6 Kota Tangerang Selatan</p>
+      </div>
+    </div>
+
+    <!-- Google Maps Card -->
+    <div class="card" style="text-align: center;">
+      <h3 style="margin-bottom: 12px; color: var(--text-main); font-size: 1.2rem;">Peta Lokasi Acara</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+        Klik tombol di bawah untuk membuka petunjuk arah langsung menuju lokasi SMKN 6 Kota Tangerang Selatan via Google Maps.
+      </p>
+      <a href="https://maps.google.com/?q=SMKN+6+Kota+Tangerang+Selatan" target="_blank" class="btn btn-secondary">
+        🗺️ Buka Petunjuk Arah (Google Maps)
+      </a>
+    </div>
+
+    <!-- RSVP & Attendance Confirmation Form Card -->
+    <div class="card">
+      <h2 style="margin-bottom: 8px; color: var(--text-main); font-size: 1.3rem; text-align: center;">Konfirmasi Kehadiran (RSVP)</h2>
+      <p style="color: var(--text-muted); text-align: center; margin-bottom: 24px; font-size: 0.95rem;">
+        Mohon isi formulir di bawah ini untuk mengonfirmasi kehadiran Anda pada acara Edu Fair 2026. Data akan tersimpan otomatis ke sistem.
+      </p>
+
+      <div id="rsvpAlert" class="alert"></div>
+
+      <form id="rsvpForm">
+        <div class="form-group">
+          <label for="rsvpNama">Nama Lengkap & Gelar</label>
+          <input type="text" id="rsvpNama" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvpInstansi">Asal Instansi / Perusahaan / Kampus</label>
+          <input type="text" id="rsvpInstansi" class="form-control" placeholder="Masukkan nama instansi Anda" required>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvpKategori">Kategori Tamu</label>
+          <select id="rsvpKategori" class="form-control">
+            <option value="Perusahaan">Perusahaan / Industri</option>
+            <option value="Perguruan Tinggi">Perguruan Tinggi / Kampus</option>
+            <option value="Pemerintahan">Pemerintahan / Dinas</option>
+            <option value="UMKM/Wirausaha">UMKM / Wirausaha</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvpWa">Nomor WhatsApp Aktif</label>
+          <input type="tel" id="rsvpWa" class="form-control" placeholder="Contoh: 081234567890" required>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvpStatus">Konfirmasi Kehadiran</label>
+          <select id="rsvpStatus" class="form-control" required>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+            <option value="Berhalangan / Diwakilkan">Berhalangan / Diwakilkan</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvpJumlah">Jumlah Perwakilan yang Hadir</label>
+          <input type="number" id="rsvpJumlah" class="form-control" value="1" min="1" max="10" required>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvpPesan">Pesan / Ucapan untuk Panitia (Opsional)</label>
+          <textarea id="rsvpPesan" class="form-control" placeholder="Tuliskan pesan atau kesan untuk panitia..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">
+          ✨ Konfirmasi Kehadiran & Perbarui Daftar
+        </button>
+      </form>
+    </div>
+
+    <!-- Daftar Konfirmasi Kehadiran Tamu (Publik) -->
+    <div class="card">
+      <h3 style="margin-bottom: 12px; color: var(--text-main); font-size: 1.2rem; text-align: center;">Daftar Konfirmasi Kehadiran</h3>
+      <p style="color: var(--text-muted); font-size: 0.90rem; text-align: center; margin-bottom: 16px;">
+        Berikut adalah daftar tamu undangan yang telah mengisi konfirmasi kehadiran secara real-time.
+      </p>
+      <div class="table-responsive">
+        <table class="data-table" style="width: 100%; font-size: 0.9rem;">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Tamu</th>
+              <th>Instansi</th>
+              <th>Status</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody id="publicRsvpList">
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 20px;">
+                Memuat daftar kehadiran...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Edu Fair & Career Expo — SMKN 6 Kota Tangerang Selatan. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Main Application Script -->
+  <script src="js/script.js"></script>
+</body>
+</html>

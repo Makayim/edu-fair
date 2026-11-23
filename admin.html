@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin & WhatsApp Blast — Edu Fair & Career Expo 2026</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- SheetJS CDN for Excel/CSV parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <div class="admin-container">
+    <!-- Header Hero -->
+    <header class="hero-header" style="padding: 30px 20px;">
+      <span class="badge-event">Panel Panitia SMKN 6 Tangsel</span>
+      <h1>Panel WhatsApp Blast Undangan</h1>
+      <p class="tagline">Edu Fair & Career Expo 2026 — "Connecting Competence to Future: Bekerja, Melanjutkan, Berwirausaha"</p>
+    </header>
+
+    <!-- Alert Box -->
+    <div id="adminAlert" class="alert"></div>
+
+    <!-- Upload Section Card -->
+    <div class="card">
+      <h2 style="margin-bottom: 16px; color: var(--text-main); font-size: 1.3rem;">1. Unggah Data Tamu Undangan</h2>
+      <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+        Unggah file data tamu berformat <strong>.xlsx</strong>, <strong>.xls</strong>, atau <strong>.csv</strong>. Pastikan kolom memiliki header: <code>nama_tamu</code>, <code>instansi</code>, <code>kategori</code>, dan <code>nomor_wa</code>.
+      </p>
+
+      <div class="upload-zone" id="uploadZone">
+        <div class="icon">📂</div>
+        <h3 style="color: var(--primary-blue); margin-bottom: 8px;">Klik atau Seret File di Sini</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Mendukung file Excel (.xlsx, .xls) dan CSV (.csv)</p>
+        <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv">
+      </div>
+
+      <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <button type="button" id="downloadTemplateBtn" class="btn btn-secondary" style="width: auto; padding: 10px 20px; font-size: 0.9rem;">
+          📥 Unduh Template CSV Tamu
+        </button>
+        <div style="font-size: 0.9rem; color: var(--text-muted);">
+          Total Tamu Dimuat: <strong id="totalTamu" style="color: var(--primary-blue);">0</strong> orang
+        </div>
+      </div>
+    </div>
+
+    <!-- Guest Table Section Card -->
+    <div class="card">
+      <h2 style="margin-bottom: 12px; color: var(--text-main); font-size: 1.3rem;">2. Daftar Tamu & Aksi WhatsApp Blast</h2>
+      <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem;">
+        Klik tombol <strong>"Kirim WA"</strong> untuk membuka WhatsApp dengan pesan otomatis & tautan personal unik setiap tamu.
+      </p>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Tamu</th>
+              <th>Instansi</th>
+              <th>Kategori</th>
+              <th>No. WhatsApp</th>
+              <th>Aksi Blast</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                Belum ada data tamu yang diunggah. Silakan unggah file Excel/CSV di atas.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Edu Fair & Career Expo — SMKN 6 Kota Tangerang Selatan. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Main Application Script -->
+  <script src="js/script.js"></script>
+</body>
+</html>
