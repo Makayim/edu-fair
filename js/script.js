@@ -333,7 +333,7 @@ async function handleRsvpSubmit(e) {
   if (savedToSupabase) {
     document.getElementById('rsvpForm').reset();
     
-    // Memunculkan dialog konfirmasi reload halaman
+    // Pop-up konfirmasi reload halaman setelah kirim RSVP
     const mauReload = confirm("Terima kasih! Konfirmasi kehadiran Anda berhasil tercatat.\n\nApakah Anda ingin memuat ulang (reload) halaman sekarang untuk melihat daftar kehadiran terbaru?");
     
     if (mauReload) {
